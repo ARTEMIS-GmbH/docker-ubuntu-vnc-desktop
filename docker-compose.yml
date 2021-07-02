@@ -1,0 +1,26 @@
+version: '3'
+services:
+  iex_dev_carmaker:
+    image: 'dorowu/ubuntu-desktop-lxde-vnc'
+    container_name: iexdev
+    hostname: iexdev
+    domainname: artemis.auto
+    mac_address: 02:42:ac:16:00:02
+    ports:
+      - "6080:80"
+      - "6900:5900"
+    environment:
+      - 'IEX_SRC_DIR=/home/${USER}/src'
+      - 'USER=rszabo'
+      - 'PASSWORD=dev'
+    build:
+      context: '.'
+      dockerfile: 'Dockerfile.amd64'
+    volumes:
+      - '.:/home/${USER}/src'
+      - 'iex_home:/${USER}'
+    restart: unless-stopped
+
+volumes:
+  iex_home:
+    external: true
