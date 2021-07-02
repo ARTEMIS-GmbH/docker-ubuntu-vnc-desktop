@@ -14,5 +14,5 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           artifacts: "ARCHITECTURE.md"
-          bodyFile: "readme.md"
+          bodyFile: "README.md"
           token: ${{ secrets.RELEASE_TOKEN }}
